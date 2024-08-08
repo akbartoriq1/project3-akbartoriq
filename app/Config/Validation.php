@@ -26,7 +26,13 @@ class Validation extends BaseConfig
         FileRules::class,
         CreditCardRules::class,
     ];
-
+    public $upload = [
+        'title' => 'required|min_length[3]|max_length[255]',
+        'description' => 'required|min_length[10]',
+        'image' => 'uploaded[image]|max_size[image,1024]|is_image[image]',
+    ];
+    
+    
     /**
      * Specifies the views that are used to display the
      * errors.

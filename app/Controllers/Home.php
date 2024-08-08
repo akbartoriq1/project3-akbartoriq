@@ -2,10 +2,16 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+use CodeIgniter\Controller;
+use App\Models\ContentModel;
+
+class Home extends Controller
 {
-    public function index(): string
+    public function index()
     {
-        return view('home');
+        $model = new ContentModel();
+        $data['content'] = $model->findAll(); // Mengambil semua data konten dari model
+
+        return view('home', $data); // Mengirim data ke view
     }
 }
